@@ -16,7 +16,7 @@ import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name="ArchivoAdjunto")
+@Table(name="archivoadjunto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,7 +37,7 @@ public class ArchivoAdjunto {
     @ManyToOne
     @JsonManagedReference
     @JoinColumns({
-        @JoinColumn(name = "usuario", referencedColumnName = "idUsuario"),
+        @JoinColumn(name = "usuario", referencedColumnName = "usuario"),
         @JoinColumn(name = "idmensaje",referencedColumnName = "idMensaje")
     })
     private Mensaje mensaje;

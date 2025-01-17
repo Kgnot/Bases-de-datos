@@ -34,7 +34,7 @@ public class Pais {
     @OneToMany(mappedBy = "pais")
     @JsonBackReference
     private List<Usuario> usuarios;
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "pais")
     @JsonBackReference
     private List<Destinatario> destinatarios;
 }

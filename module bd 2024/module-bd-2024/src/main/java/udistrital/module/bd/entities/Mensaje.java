@@ -59,7 +59,7 @@ public class Mensaje {
     @JsonManagedReference
     @JoinColumns
     ({
-       @JoinColumn(name = "men_usuario",referencedColumnName = "idUsuario"),
+       @JoinColumn(name = "men_usuario",referencedColumnName = "usuario"),
        @JoinColumn(name = "men_idmensaje",referencedColumnName = "idMensaje")
     })
     private Mensaje mensajePadre;
