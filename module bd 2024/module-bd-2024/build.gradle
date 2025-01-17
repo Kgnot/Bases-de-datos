@@ -19,9 +19,21 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//Oracle
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	//Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//Anotaciones como @Table y más
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// apartado de lombook
+	compileOnly 'org.projectlombok:lombok:1.18.36'
+	annotationProcessor 'org.projectlombok:lombok:1.18.36'
+	//test Lombook
+	testCompileOnly 'org.projectlombok:lombok:1.18.36'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+	// dot-env:
+	implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
 }
 
 tasks.named('test') {
