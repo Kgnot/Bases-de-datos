@@ -1,0 +1,6 @@
+spring:
+    application:
+        name: module-bd-2024
+
+server:
+  port: 8083

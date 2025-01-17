@@ -1,0 +1,13 @@
+package udistrital.module.bd.launcher;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ModuleBd2024Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ModuleBd2024Application.class, args);
+	}
+
+}
