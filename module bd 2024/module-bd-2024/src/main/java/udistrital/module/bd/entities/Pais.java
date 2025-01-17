@@ -15,22 +15,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Estado")
+@Table(name = "Pais")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Estado {
+public class Pais {
     
     @Id
-    @Column(name = "idestado", length = 5)
-    private String idEstado;
-    @Column(name = "nombreestado", length = 30)
-    private String nombreEstado;
+    @Column(name = "idpais", length = 5)
+    private String idPais;
+    @Column(name = "nompais", length = 30, nullable = false)
+    private String nomPais;
+    @Column(name = "dominio")
+    private String dominio;
 
-    //Aquí las demas relaciones
-    @OneToMany(mappedBy = "estado")
+    // Aqui las diferentes relaciones.
+    @OneToMany(mappedBy = "pais")
     @JsonBackReference
     private List<Usuario> usuarios;
-
+    @OneToMany(mappedBy = "")
+    @JsonBackReference
+    private List<Destinatario> destinatarios;
 }

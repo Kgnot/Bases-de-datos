@@ -5,9 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name="ArchivoAdjunto")
@@ -24,6 +30,17 @@ public class ArchivoAdjunto {
     private String nomArchivo;
 
     // Aquí van las relaciones
+    //ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "idtipoarchivo")
+    private TipoArchivo TipoArchivo;
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumns({
+        @JoinColumn(name = "usuario", referencedColumnName = "idUsuario"),
+        @JoinColumn(name = "idmensaje",referencedColumnName = "idMensaje")
+    })
+    private Mensaje mensaje;
 
     
 }
