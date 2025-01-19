@@ -11,7 +11,7 @@ import udistrital.module.bd.entities.Pais;
 
 @RequiredArgsConstructor
 @Service
-public class PaisServiceImp implements PaisService {
+public class PaisServiceImpl implements PaisService {
 
     private final EntityManager manager;
 

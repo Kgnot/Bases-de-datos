@@ -54,6 +54,7 @@ public class Mensaje {
     private Pais pais;
     @ManyToOne
     @JoinColumn(name = "idtipocarpeta")
+    @JsonManagedReference
     private TipoCarpeta tipoCarpeta;
     @ManyToOne
     @JsonManagedReference
@@ -63,6 +64,10 @@ public class Mensaje {
        @JoinColumn(name = "men_idmensaje",referencedColumnName = "idMensaje")
     })
     private Mensaje mensajePadre;
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "idcategoria")
+    private Categoria categoria;
 
     // OneToMany:
     @OneToMany(mappedBy = "mensajePadre")
