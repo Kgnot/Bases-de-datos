@@ -53,8 +53,7 @@ public class Usuario {
     @JsonManagedReference
     private Pais pais;
     //One to One
-    @OneToOne
-    @JoinColumn(name = "conseccontacto",referencedColumnName = "consecContacto")
+    @OneToOne(mappedBy = "principalContact")
     private Contacto contacto;
     // one to many
     @OneToMany(mappedBy = "usuario")

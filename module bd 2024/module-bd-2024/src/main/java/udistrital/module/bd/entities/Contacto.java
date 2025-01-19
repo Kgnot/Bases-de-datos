@@ -39,8 +39,9 @@ public class Contacto {
     private Usuario usuario;
 
     //One to one y one
-    @OneToOne(mappedBy = "contacto")
-    private Usuario usuarioContacto;
+    @OneToOne
+    @JoinColumn(name = "usu_usuario")
+    private Usuario principalContact;
 
     // one to many
     @OneToMany(mappedBy = "contacto")
