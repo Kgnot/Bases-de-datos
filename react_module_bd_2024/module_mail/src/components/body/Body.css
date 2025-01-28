@@ -1,0 +1,7 @@
+.body
+{
+    position: relative;
+    background-color: var(--color-body);
+    height: var(--body-height);
+    display: flex;
+}

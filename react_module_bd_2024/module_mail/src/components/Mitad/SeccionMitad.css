@@ -1,0 +1,9 @@
+.seccionMitad
+{
+    position: relative;
+    display: flex;
+    flex: 4;
+    background-color: var(--color-seccion-centro);
+    min-width: 400px;
+    border: var(--color-border);
+}

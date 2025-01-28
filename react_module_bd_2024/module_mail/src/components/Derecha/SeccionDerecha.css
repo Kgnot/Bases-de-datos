@@ -1,0 +1,8 @@
+.seccionDerecha
+{
+    position: relative;
+    display: flex;
+    flex:5;
+    background-color: #ffffff;
+    border: var(--color-border);
+}

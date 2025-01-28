@@ -1,0 +1,40 @@
+.item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.25rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
+
+.item:hover {
+    background-color: rgba(231, 231, 231, 0.33);
+}
+
+.hr_vertical {
+    height: 100%;
+    width: 1px;
+    background-color: #e0e0e0;
+    border: none;
+    margin: 0;
+    flex-shrink: 0; /* Evita que la línea se encoja */
+}
+
+.item span {
+    font-size: 1rem;
+    color: #333333;
+}
+
+.item span:first-child {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0; /* Evita que el ID se encoja */
+}
+
+.item span:last-child {
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    flex-grow: 1; /* Ocupa el espacio restante */
+}

@@ -1,0 +1,11 @@
+.header
+{
+    position: relative;
+    display: flex;
+    background-color: var(--color-header);
+    height: var(--header-height);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5em;
+    border: var(--color-border) solid 1px;
+}

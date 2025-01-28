@@ -1,0 +1,33 @@
+.usuario_header {
+    position: relative;
+    display: flex;
+    width: 23em;
+    height: 90%;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-medium);
+    color: var(--color-text-primary);
+
+}
+
+.usuario_header img {
+    object-fit: cover;
+    max-height: 100%;
+    aspect-ratio: 1/1   ;
+    width: var(--avatar-size);
+    border-radius: 50%;
+}
+
+.usuario_header_infoUser {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+.usuario_header_infoUser p {
+    font-size: var(--font-size);
+    font-weight: 500;
+    margin: 0;
+}
