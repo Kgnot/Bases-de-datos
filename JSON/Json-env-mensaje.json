@@ -1,0 +1,13 @@
+{
+    "usuario": "Kgnot",
+    "idMensaje": "12345",
+    "idCarpeta": "env",
+    "nomPais": "Colombia",
+    "idMensajePadreM": null,
+    "idCategoria": "SOC",
+    "asunto": "Asunto mensaje Postman",
+    "cuerpoMensaje": "Este es el cuerpo del mensaje desde postman",
+    "fechaAccion": "2023-10-05",
+    "horaAccion": "14:30:00",
+    "destinatario": "Tommy"
+}
