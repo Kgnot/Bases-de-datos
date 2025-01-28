@@ -3,16 +3,11 @@ package udistrital.module.bd.entities;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,21 +39,25 @@ public class Usuario {
 
     // Relaciones
     // Many To one
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idestado")
     @JsonManagedReference
     private Estado estado;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idpais")
     @JsonManagedReference
     private Pais pais;
     //One to One
     @OneToOne(mappedBy = "principalContact")
+    @JsonIgnore
     private Contacto contacto;
     // one to many
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JsonIgnore
     private List<Contacto> contactosDelUsuario;
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Mensaje> mensajes;
 
 }

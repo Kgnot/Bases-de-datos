@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EntityScan("udistrital.module.bd.entities")
 @ComponentScan("udistrital.module.bd")
+@EnableAspectJAutoProxy
 public class ModuleBd2024Application {
 
 	public static void main(String[] args) {
@@ -20,9 +22,6 @@ public class ModuleBd2024Application {
 		{
 			System.setProperty(item.getKey(),item.getValue());
 		});
-
-
-
 
 		SpringApplication.run(ModuleBd2024Application.class, args);
 	}

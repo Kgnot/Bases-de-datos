@@ -3,6 +3,7 @@ package udistrital.module.bd.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -36,8 +37,8 @@ public class Contacto {
     //Many to one: 
     @ManyToOne
     @JoinColumn(name = "usuario")
+    @JsonManagedReference
     private Usuario usuario;
-
     //One to one y one
     @OneToOne
     @JoinColumn(name = "usu_usuario")

@@ -36,6 +36,7 @@ public class Mensaje {
     @ManyToOne
     @MapsId("idUsuario")
     @JoinColumn(name = "usuario")
+    @JsonManagedReference
     private Usuario usuario;
 
     @Column(name = "asunto")

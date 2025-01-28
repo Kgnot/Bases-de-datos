@@ -278,10 +278,11 @@ VALUES (
         'Paul',
         'Pérez Ortega',
         '03-12-1988',
-        CURRENT_DATE,
+        TRUNC(SYSDATE),
         'paul.perez@gmail.com',
         '3125689741'
     );
+    #Cambie current_date por trunc(sysdate)
 
 INSERT INTO
     usuario (

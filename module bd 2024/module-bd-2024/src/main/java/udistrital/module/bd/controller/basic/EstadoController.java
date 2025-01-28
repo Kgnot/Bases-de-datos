@@ -1,25 +1,26 @@
-package udistrital.module.bd.controller;
+package udistrital.module.bd.controller.basic;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import udistrital.module.bd.entities.Categoria;
-import udistrital.module.bd.service.categoria.CategoriaService;
+import udistrital.module.bd.entities.Estado;
+import udistrital.module.bd.service.estado.EstadoService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/estado")
 @RequiredArgsConstructor
-public class CategoriaController {
+public class EstadoController {
 
-    private final CategoriaService service;
+    private final EstadoService service;
 
     @GetMapping
-    public List<Categoria> getAll() {
+    public List<Estado> getAll() {
         return service.findAll();
     }
+
 
 }

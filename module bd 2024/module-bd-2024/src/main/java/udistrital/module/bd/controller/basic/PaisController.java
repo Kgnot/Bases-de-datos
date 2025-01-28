@@ -1,4 +1,4 @@
-package udistrital.module.bd.controller;
+package udistrital.module.bd.controller.basic;
 
 import java.util.List;
 
