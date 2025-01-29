@@ -1,0 +1,46 @@
+.mensaje-container {
+    width: 100%;
+    min-width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    background-color: rgba(211, 211, 211, 0);
+    height: 7em;
+    cursor: pointer;
+}
+.mensaje-container:hover{
+    background-color: rgba(229, 229, 229, 0.56);
+}
+
+.mensaje-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.mensaje-usuario {
+    font-weight: bold;
+}
+
+.mensaje-hora {
+    color: gray;
+    font-size: 12px;
+}
+
+.mensaje-asunto {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #000;
+}
+
+.mensaje-cuerpo {
+    font-size: 14px;
+    color: #555;
+    margin-top: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

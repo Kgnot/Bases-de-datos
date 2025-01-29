@@ -15,10 +15,10 @@ export const ListItem = ({titulo,items}:PropListItem) =>
         <>
             <h3> {titulo}: </h3>
             {
-             items?.map((item:ItemInterface) =>
+             items?.map((item:ItemInterface,index:number) =>
              {
                  return(
-                     <Item id={item.getId()} nombre={item.getNombre()}/>
+                     <Item key={index} id={item.getId()} nombre={item.getNombre()}/>
                  )
              })
             }

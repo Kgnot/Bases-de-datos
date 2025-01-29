@@ -4,12 +4,13 @@ import {Body} from "../components/body/Body.tsx";
 
 function App() {
 
-  return (
-    <>
-        <Header/>
-        <Body/>
-    </>
-  )
+    return (
+        <>
+            <Header/>
+            <Body/>
+
+        </>
+    )
 }
 
 export default App
