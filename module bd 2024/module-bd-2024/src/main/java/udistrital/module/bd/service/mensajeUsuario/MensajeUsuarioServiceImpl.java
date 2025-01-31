@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import udistrital.module.bd.dto.entities.MensajeDTO;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,12 +22,16 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
 
     @Override
     public List<MensajeDTO> buscarMensajes(String usuario, String carpeta, String asunto, String categoria, Date fechaDesde, Date fechaHasta) {
+        if(usuario.isEmpty())
+            return new ArrayList<>();
         StringBuilder queryStr = new StringBuilder(
                 "SELECT m.usuario.usuario, m.id.idMensaje, m.tipoCarpeta.descTipoCarpeta, " +
                 "m.pais.nomPais, m.mensajePadre.id.idMensaje, m.categoria.descCategoria, " +
-                "m.asunto, m.cuerpoMensaje, m.fechaAccion , m.horaAccion FROM Mensaje m WHERE 1=1 ");
-        if (usuario != null)
-            queryStr.append("AND m.usuario.usuario = :usuario ");
+                "m.asunto, m.cuerpoMensaje, m.fechaAccion , m.horaAccion, d.usuario.usuario " +
+                "FROM Mensaje m , Mensaje d " +
+                "WHERE m.id.idMensaje = d.id.idMensaje " +
+                "AND d.usuario.usuario NOT LIKE m.usuario.usuario ");
+        queryStr.append("AND m.usuario.usuario = :usuario ");
         if (carpeta != null)
             queryStr.append("AND m.tipoCarpeta.idTipoCarpeta = :carpeta ");
         if (asunto != null)

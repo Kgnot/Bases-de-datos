@@ -1,8 +1,10 @@
 import './Usuario.css'
+import {usePerfil} from "../../../hooks/usePerfil.ts";
 
 export const Usuario = () =>
 {
-    const nombre = "Nombre";
+    const {perfil} = usePerfil();
+    const nombre = perfil.nombre + " - " + perfil.correoContacto;
     const fecha:Date = new Date(Date.now());
 
 

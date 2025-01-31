@@ -1,0 +1,91 @@
+.login_container {
+    background-color: #ffffff;
+    box-shadow: 0 0 23px 0 #cecece;
+    margin: auto;
+    width: 30em; /* Más pequeño */
+    padding: 2em;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.login_container h1 {
+    font-size: 1.5em; /* Más pequeño */
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.input_group {
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.input_group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #555;
+}
+
+.input_group input {
+    width: 100%;
+    padding: 0.5em 0; /* Ajuste de padding */
+    border: none; /* Quitamos el borde */
+    border-bottom: 1px solid #ccc; /* Solo borde inferior */
+    font-size: 1em;
+    outline: none; /* Quitamos el outline */
+}
+
+.input_group input:focus {
+    border-bottom: 1px solid #007bff; /* Cambiamos el color del borde inferior al enfocar */
+}
+
+.forgot_password {
+    color: #007bff;
+    cursor: pointer;
+    margin-bottom: 1.5em;
+    text-align: right;
+    width: 100%;
+    font-size: 0.9em; /* Más pequeño */
+}
+
+.forgot_password:hover {
+    text-decoration: underline;
+}
+
+.button_group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button_group button {
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%; /* Ajustamos el ancho de los botones */
+}
+
+.register_button {
+    background-color: #6c757d;
+    color: white;
+}
+
+.register_button:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para el BotonProvisionalLOGIN */
+.button_group .BotonProvisionalLOGIN {
+    background-color: #007bff;
+    color: white;
+}
+
+.button_group .BotonProvisionalLOGIN:hover {
+    background-color: #0056b3;
+}

@@ -1,13 +1,20 @@
 import './App.css'
-import {Header} from "../components/header/Header.tsx";
-import {Body} from "../components/body/Body.tsx";
+import {Login} from "../login/Login.tsx";
+import {Principal} from "../principal/Principal.tsx";
+import {usePerfil} from "../hooks/usePerfil.ts";
 
 function App() {
+    const {perfil} = usePerfil();
 
+    console.log(perfil.usuario)
     return (
         <>
-            <Header/>
-            <Body/>
+            {perfil.usuario === undefined &&
+                <Login/>
+            }
+            {perfil.usuario !== undefined &&
+                <Principal/>
+            }
         </>
     )
 }

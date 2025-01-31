@@ -9,7 +9,6 @@ import {Categoria, CategoriaAdapter} from "../../../model/Categoria.ts";
 export const PropEmail = () => {
 
     const {data, loading, error} = useFetch<Carpeta[]>("http://localhost:8083/tipo_carpeta");
-    console.log("data: ", data)
     const {
         data: dataCat,
         loading: loadingCat,

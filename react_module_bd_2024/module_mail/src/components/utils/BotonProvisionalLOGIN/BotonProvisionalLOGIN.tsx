@@ -1,13 +1,9 @@
 import './BotonProvisionalLOGIN.css'
-import {usePerfil} from "../../../hooks/usePerfil.ts";
 
-export const BotonProvisionalLOGIN = () => {
-    const {initUser} = usePerfil();
-
-
-    return(
+export const BotonProvisionalLOGIN = ({method}: { method: ()=>void }) => {
+    return (
         <>
-        <button onClick={() => initUser("Kgnot")}> INGRESE PENDEJOS</button>
+            <button onClick={method}> Login</button>
         </>
     )
 }
