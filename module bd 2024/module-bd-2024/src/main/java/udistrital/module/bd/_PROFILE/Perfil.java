@@ -20,5 +20,4 @@ public class Perfil {
     // demas que se me olvidaron:
     private String pais;
     private String estado;
-
 }

@@ -22,15 +22,24 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
 
     @Override
     public List<MensajeDTO> buscarMensajes(String usuario, String carpeta, String asunto, String categoria, Date fechaDesde, Date fechaHasta) {
-        if(usuario.isEmpty())
+        if (usuario.isEmpty())
             return new ArrayList<>();
         StringBuilder queryStr = new StringBuilder(
-                "SELECT m.usuario.usuario, m.id.idMensaje, m.tipoCarpeta.descTipoCarpeta, " +
-                "m.pais.nomPais, m.mensajePadre.id.idMensaje, m.categoria.descCategoria, " +
-                "m.asunto, m.cuerpoMensaje, m.fechaAccion , m.horaAccion, d.usuario.usuario " +
-                "FROM Mensaje m , Mensaje d " +
-                "WHERE m.id.idMensaje = d.id.idMensaje " +
-                "AND d.usuario.usuario NOT LIKE m.usuario.usuario ");
+                "SELECT m.usuario.usuario, " +
+                        "m.id.idMensaje, " +
+                        "m.tipoCarpeta.descTipoCarpeta, " + // antes descCarpeta
+                        "m.pais.nomPais, " +
+                        "m.mensajePadre.id.idMensaje, " +
+                        "m.categoria.descCategoria, " + // antes descCategoria
+                        "m.asunto, " +
+                        "m.cuerpoMensaje, " +
+                        "m.fechaAccion," +
+                        "m.horaAccion, " +
+                        "d.mensaje.id.idUsuario, " +
+                        "d.tipoCopia.idTipoCopia " +
+                        "FROM Mensaje m , " +
+                        "Destinatario d " +
+                        "WHERE m.id.idMensaje = d.mensaje.id.idMensaje ");
         queryStr.append("AND m.usuario.usuario = :usuario ");
         if (carpeta != null)
             queryStr.append("AND m.tipoCarpeta.idTipoCarpeta = :carpeta ");
@@ -43,8 +52,7 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
         if (fechaHasta != null)
             queryStr.append("AND m.fechaAccion <= :fechaHasta ");
         TypedQuery<MensajeDTO> query = manager.createQuery(queryStr.toString(), MensajeDTO.class);
-
-        if (usuario != null) query.setParameter("usuario", usuario);
+        query.setParameter("usuario", usuario);
         if (carpeta != null) query.setParameter("carpeta", carpeta);
         if (asunto != null) query.setParameter("asunto", asunto);
         if (categoria != null) query.setParameter("categoria", categoria);
@@ -57,16 +65,18 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
     @Override
     @Transactional
     public MensajeDTO enviarMensaje(MensajeDTO mensajeDTO) {
-        String idMensaje = UUID.randomUUID().toString().substring(0,5);
+        String idMensaje = UUID.randomUUID().toString().substring(0, 5);
         System.out.println("idMensaje: " + idMensaje);
         mensajeDTO.setIdMensaje(idMensaje);
 
-        insertarMensaje(mensajeDTO.getUsuario(),mensajeDTO.getIdCarpeta(), mensajeDTO);
-        insertarMensaje(mensajeDTO.getDestinatario(),"env", mensajeDTO);
-
+        insertarMensaje(mensajeDTO.getUsuario(), mensajeDTO.getIdCarpeta(), mensajeDTO);
+//        mensajeDTO.getDestinatarios()
+//                .forEach(e -> insertarMensaje(e, "env", mensajeDTO));
+        insertarMensaje(mensajeDTO.getIdUsuario(), "env", mensajeDTO);
         return mensajeDTO;
     }
-    private void insertarMensaje(String usuario,String tipoCarpeta, MensajeDTO mensajeDTO) {
+
+    private void insertarMensaje(String usuario, String tipoCarpeta, MensajeDTO mensajeDTO) {
         String sql = "insert into MENSAJE " +
                 "(   USUARIO, " +
                 "    IDMENSAJE, " +

@@ -17,36 +17,13 @@ public class MensajeDTO {
     private String idMensaje;
     private String idCarpeta;
     private String nomPais;
-    private String idMensajePadreM;
+    private String idMensajePadre; // Nombre más descriptivo
     private String idCategoria;
     private String asunto;
     private String cuerpoMensaje;
-    private Date fechaAccion;
-    private Time horaAccion;
-    // Apartado para otras cosas
-    private String destinatario;
-
-    public MensajeDTO(String usuario,
-                      String idMensaje,
-                      String idCarpeta,
-                      String nomPais,
-                      String idMensajePadreM,
-                      String idCategoria,
-                      String asunto,
-                      String cuerpoMensaje,
-                      Date fechaAccion,
-                      Time horaAccion) {
-
-        this.usuario = usuario;
-        this.idMensaje = idMensaje;
-        this.idCarpeta = idCarpeta;
-        this.nomPais = nomPais;
-        this.idMensajePadreM = idMensajePadreM;
-        this.idCategoria = idCategoria;
-        this.asunto = asunto;
-        this.cuerpoMensaje = cuerpoMensaje;
-        this.fechaAccion = fechaAccion;
-        this.horaAccion = horaAccion;
-    }
-
+    private Date fechaAccion; // Usar LocalDate
+    private Time horaAccion;  // Usar LocalTime
+//   private List<DestinatarioDTO> destinatarios; // Lista de DestinatarioDTO
+    private String idUsuario;
+    private String idTipoCopia;
 }

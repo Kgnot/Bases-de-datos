@@ -37,7 +37,8 @@ export const ListaMensajesProvider = ({ children }: ContextProviderProps) => {
             if (!response.ok) throw new Error("Error al obtener los mensajes");
             const data: Mensaje[] = await response.json();
             setListaMensajes(data);
-            console.log(urlMensajes)
+            console.log("url: ",urlMensajes)
+            console.log("datos: ",data);
         } catch (error) {
             console.error("Error:", error);
         }
