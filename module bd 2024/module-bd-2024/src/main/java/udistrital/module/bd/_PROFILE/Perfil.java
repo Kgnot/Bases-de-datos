@@ -17,4 +17,8 @@ public class Perfil {
     private String apellido;
     private String celular;
     private String correoContacto;
+    // demas que se me olvidaron:
+    private String pais;
+    private String estado;
+
 }

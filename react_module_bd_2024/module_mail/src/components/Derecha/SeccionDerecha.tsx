@@ -1,25 +1,24 @@
 import './SeccionDerecha.css'
 import {useMensaje} from "../../hooks/useMenesaje.ts";
+import {LecturaMensaje} from "./LecturaMensaje/LecturaMensaje.tsx";
+import {CrearMensaje} from "./CrearMensaje/CrearMensaje.tsx";
 
 
 export const SeccionDerecha = () => {
-    const { mensaje } = useMensaje();
+    const {mensaje, state} = useMensaje();
 
-    if (mensaje.usuario === undefined) {
+    if (mensaje.usuario === undefined && state) {
         return <div className="seccionDerecha"> No hay mensaje seleccionado</div>;
     }
-    console.log("mensaje : ",mensaje.usuario)
+    console.log(state)
     return (
         <div className="seccionDerecha">
-            <div className="mensaje-detalle">
-                <h2 className="mensaje-asunto">{mensaje.asunto}</h2>
-                <p className="mensaje-usuario">De: {mensaje.usuario} ({mensaje.nomPais})</p>
-                <p className="mensaje-destinatario">Para: {mensaje.destinatario}</p>
-                <p className="mensaje-fecha">Fecha: {mensaje.fechaAccion} - {mensaje.horaAccion}</p>
-                <p className="mensaje-categoria">Categoría: {mensaje.idCategoria}</p>
-                <hr />
-                <p className="mensaje-cuerpo">{mensaje.cuerpoMensaje}</p>
-            </div>
+            {/*TODO : Debemos crear un enum para diferentes estados, mas de uno, de parte de state: Sin mensaje | Nuevo mensaje | leer mensaje*/}
+            {!state &&
+                <>
+                    <CrearMensaje/>
+                </>}
+            {state && <LecturaMensaje mensaje={mensaje}/>}
         </div>
     );
 };

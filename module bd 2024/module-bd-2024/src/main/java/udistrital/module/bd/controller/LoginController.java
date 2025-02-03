@@ -20,7 +20,6 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO login) {
-        System.out.println("El usuario: xd : "+login);
         Perfil pfl = service.login(login.getNombre());
         if (pfl == null) {
             return ResponseEntity.badRequest().body("Usuario no encontrado");

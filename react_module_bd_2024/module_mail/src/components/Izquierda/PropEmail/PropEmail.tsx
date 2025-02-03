@@ -4,10 +4,11 @@ import {useFetch} from "../../../hooks/useFetch.ts";
 import {Carpeta, CarpetaAdapter} from "../../../model/carpeta.ts";
 import {Item} from "../../../model/item.ts";
 import {Categoria, CategoriaAdapter} from "../../../model/Categoria.ts";
+import {useListaMensajes} from "../../../hooks/useListaMensajes.ts";
 
 
 export const PropEmail = () => {
-
+    const {selectCarpeta,selectCategoria} = useListaMensajes();
     const {data, loading, error} = useFetch<Carpeta[]>("http://localhost:8083/tipo_carpeta");
     const {
         data: dataCat,
@@ -34,11 +35,15 @@ export const PropEmail = () => {
     const adaptedItemsCarpeta = data.map((carpeta: Carpeta) => new CarpetaAdapter(carpeta)) as Item[];
     const adaptedItemsCat = dataCat.map((cat: Categoria) => new CategoriaAdapter(cat)) as Item[];
 
+
+
+
+
     return (
         <>
             <div className="propEmail">
-                <ListItem titulo={"Carpetas"} items={adaptedItemsCarpeta}/>
-                <ListItem titulo={"Categorías"} items={adaptedItemsCat}/>
+                <ListItem titulo={"Carpetas"} items={adaptedItemsCarpeta} methodParent={selectCarpeta}/>
+                <ListItem titulo={"Categorías"} items={adaptedItemsCat} methodParent={selectCategoria}/>
             </div>
         </>
     )

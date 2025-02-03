@@ -19,7 +19,7 @@ public class LoginServiceImpl implements LoginService {
         try {
             TypedQuery<Perfil> query =
                     manager.createQuery(
-                            "SELECT usu.usuario, usu.nombre, usu.apellido,usu.celular, c.correoContacto" +
+                            "SELECT usu.usuario, usu.nombre, usu.apellido,usu.celular, c.correoContacto, usu.pais.id, usu.estado.id" +
                                     " FROM Usuario usu, Contacto c" +
                                     " WHERE usu.usuario = :usuario  and " +
                                     " c.principalContact =c.usuario and" +

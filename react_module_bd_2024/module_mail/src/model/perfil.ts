@@ -5,4 +5,6 @@ export interface Perfil
     apellido:string;
     celular:string;
     correoContacto:string;
+    pais:string;
+    estado:string;
 }
