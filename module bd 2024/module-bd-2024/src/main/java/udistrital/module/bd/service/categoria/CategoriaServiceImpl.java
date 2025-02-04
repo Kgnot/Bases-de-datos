@@ -1,6 +1,7 @@
 package udistrital.module.bd.service.categoria;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,8 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public List<Categoria> findAll() {
-        TypedQuery<Categoria> query = manager.createQuery("select c from Categoria c", Categoria.class);
-        return query.getResultList();
+        String query = "SELECT  * from CATEGORIA";
+        Query createQuery = manager.createNativeQuery(query,Categoria.class);
+        return createQuery.getResultList();
     }
 }

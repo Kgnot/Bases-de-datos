@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,13 +19,17 @@ public class MensajeDTO {
     private String idMensaje;
     private String idCarpeta;
     private String nomPais;
+    private String idPais;
     private String idMensajePadre; // Nombre más descriptivo
     private String idCategoria;
     private String asunto;
     private String cuerpoMensaje;
-    private Date fechaAccion; // Usar LocalDate
-    private Time horaAccion;  // Usar LocalTime
+    private Timestamp fechaAccion; // Usar LocalDate
+    private Timestamp horaAccion;  // Usar LocalTime
 //   private List<DestinatarioDTO> destinatarios; // Lista de DestinatarioDTO
-    private String idUsuario;
+    private String destinatario;
     private String idTipoCopia;
+    // Apartado del arrayList:
+    private List<DestinatarioDTO> listaDestinatariosCO;
+    private List<ArchivoDTO> listaArchivos;
 }

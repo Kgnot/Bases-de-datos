@@ -1,9 +1,11 @@
 package udistrital.module.bd.service.tipoCopia;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import udistrital.module.bd.entities.Estado;
 import udistrital.module.bd.entities.TipoCopia;
 
 import java.util.List;
@@ -17,7 +19,8 @@ public class TipoCopiaServiceImpl implements TipoCopiaService {
 
     @Override
     public List<TipoCopia> findAll() {
-        TypedQuery<TipoCopia> query = manager.createQuery("select tc from TipoCopia tc", TipoCopia.class);
-        return query.getResultList();
+        String query = "SELECT  * from TIPOCOPIA";
+        Query createQuery = manager.createNativeQuery(query, TipoCopia.class);
+        return createQuery.getResultList();
     }
 }

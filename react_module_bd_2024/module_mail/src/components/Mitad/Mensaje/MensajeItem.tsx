@@ -9,7 +9,6 @@ export const MensajeItem = ({mensaje}: { mensaje: Mensaje }) => {
 
     const onClickHandler = (mensaje: Mensaje) => {
         setMensaje(mensaje);
-        console.log("xd")
     }
 
 

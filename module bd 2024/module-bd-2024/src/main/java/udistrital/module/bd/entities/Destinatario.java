@@ -42,8 +42,8 @@ public class Destinatario {
     @ManyToOne
     @JsonManagedReference
     @JoinColumns({
-        @JoinColumn(name = "usuario"),
-        @JoinColumn(name = "idmensaje")
+        @JoinColumn(name = "idmensaje"),
+        @JoinColumn(name = "usuario")
     })
     private Mensaje mensaje;
 

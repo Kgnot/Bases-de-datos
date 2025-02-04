@@ -2,11 +2,13 @@ package udistrital.module.bd.service.pais;
 
 import java.util.List;
 
+import jakarta.persistence.Query;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
+import udistrital.module.bd.entities.Estado;
 import udistrital.module.bd.entities.Pais;
 
 @RequiredArgsConstructor
@@ -17,12 +19,9 @@ public class PaisServiceImpl implements PaisService {
 
     @Override
     public List<Pais> findAll() {
-        TypedQuery<Pais> query = manager
-                .createQuery(
-                        "SELECT p FROM Pais p", // Select * from pais
-                        Pais.class);
-
-        return query.getResultList();
+        String query = "SELECT  * from PAIS";
+        Query createQuery = manager.createNativeQuery(query, Pais.class);
+        return createQuery.getResultList();
     }
 
 }

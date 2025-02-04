@@ -1,9 +1,11 @@
 package udistrital.module.bd.service.tipoCarpeta;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import udistrital.module.bd.entities.Estado;
 import udistrital.module.bd.entities.TipoCarpeta;
 
 import java.util.List;
@@ -16,10 +18,8 @@ public class TipoCarpetaImpl implements TipoCarpetaService {
 
     @Override
     public List<TipoCarpeta> findAll() {
-        TypedQuery<TipoCarpeta> query = manager.createQuery(
-                "select tp from TipoCarpeta tp",
-                TipoCarpeta.class
-        );
-        return query.getResultList();
+        String query = "SELECT  * from TIPOCARPETA";
+        Query createQuery = manager.createNativeQuery(query, TipoCarpeta.class);
+        return createQuery.getResultList();
     }
 }
