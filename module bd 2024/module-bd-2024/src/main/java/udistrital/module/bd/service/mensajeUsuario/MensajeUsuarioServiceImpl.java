@@ -130,10 +130,15 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
         mensajeDTO.setIdMensaje(idMensaje);
         insertarMensaje(mensajeDTO.getUsuario(), mensajeDTO.getIdCarpeta(), mensajeDTO);
         sendDestinatario(mensajeDTO, idMensaje);
+        // ahora enviamos los archivos:
+        for(ArchivoDTO arch : mensajeDTO.getListaArchivos())
+        {
+            insertarDocumentos(mensajeDTO,arch,idMensaje);
+        }
         return mensajeDTO;
     }
 
-    protected void sendDestinatario(MensajeDTO mensajeDTO, String mensajeId) {
+    private void sendDestinatario(MensajeDTO mensajeDTO, String mensajeId) {
         String queryDestinatario =
                 "INSERT " +
                         "INTO Destinatario (consecdestinatario,idpais,conseccontacto,idtipocopia,usuario,idmensaje)" +
@@ -161,7 +166,6 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
         // Despues de eso:
         insertarMensaje(mensajeDTO.getDestinatario(), "rec", mensajeDTO);
     }
-
 
     private void insertarMensaje(String usuario, String tipoCarpeta, MensajeDTO mensajeDTO) {
         String sql = "insert into MENSAJE " +
@@ -200,6 +204,23 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
         query.setParameter("cuerpoMensaje", mensajeDTO.getCuerpoMensaje());
 
         query.executeUpdate();
+    }
+
+    private void insertarDocumentos(MensajeDTO mensajeDTO, ArchivoDTO archivo,String mensajeId) {
+        String query = "INSERT into ARCHIVOADJUNTO (CONSECARCHIVO, IDTIPOARCHIVO, USUARIO, IDMENSAJE, NOMARCHIVO) VALUES " +
+                "((select max(CONSECARCHIVO)+1 from ARCHIVOADJUNTO) " +
+                ", :idTipoArchivo" +
+                ",:usuario" +
+                ",:idMensaje" +
+                ",:nomArchivo)";
+
+        Query queryExe = manager.createNativeQuery(query);
+        queryExe.setParameter("idTipoArchivo",archivo.getTipoArchivo());
+        queryExe.setParameter("usuario",mensajeDTO.getUsuario());
+        queryExe.setParameter("idMensaje",mensajeId);
+        queryExe.setParameter("nomArchivo",archivo.getNomArchivo());
+
+        queryExe.executeUpdate();
     }
 }
 

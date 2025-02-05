@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DestinatarioDTO {
-    private String email;
+public class ArchivoDTO {
+    private String nomArchivo;
+    private String tipoArchivo;
 }
