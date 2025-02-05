@@ -147,7 +147,7 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
                         ", :idPais " +
                         ", (select c.conseccontacto " +
                         "   from Contacto c " +
-                        "   WHERE lower(c.USU_USUARIO) like :destinatario " +
+                        "   WHERE lower(c.CORREOCONTACTO) like :destinatario " +
                         "           and  lower(c.usuario) like :lowerUsuario ) " +
                         ", :tipoCopia " +
                         ", :usuario " +
@@ -168,6 +168,15 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
     }
 
     private void insertarMensaje(String usuario, String tipoCarpeta, MensajeDTO mensajeDTO) {
+        if(tipoCarpeta.equals("rec"))
+        {
+            String sqlUsuarioRecibido = "Select c.usuario from Contacto c where :usuario = c.correoContacto and c.usuario = c.usu_usuario";
+            Query queryAux = manager.createNativeQuery(sqlUsuarioRecibido,String.class);
+            queryAux.setParameter("usuario",usuario);
+            usuario = (String) queryAux.getSingleResult();
+        }
+
+
         String sql = "insert into MENSAJE " +
                 "(   USUARIO, " +
                 "    IDMENSAJE, " +
@@ -196,6 +205,7 @@ public class MensajeUsuarioServiceImpl implements MensajeUsuarioService {
                 ")";
 
         Query query = manager.createNativeQuery(sql);
+        System.out.println("--------------------------------------------------------------------USUARIO: "+usuario);
         query.setParameter("usuario", usuario);
         query.setParameter("idMensaje", mensajeDTO.getIdMensaje());
         query.setParameter("idTipoCarpeta", tipoCarpeta);
